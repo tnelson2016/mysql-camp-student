@@ -17,7 +17,6 @@ CREATE TABLE `team` (
   UNIQUE KEY `ABBR_UNIQUE` (`ABBR`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
 INSERT INTO `baseball`.`team` (`teamName`, `ABBR`, `league`, `divisionName`) VALUES ('Baltimore Orioles', 'BAL', 'AL', 'AL EAST');
 INSERT INTO `baseball`.`team` (`teamName`, `ABBR`, `league`, `divisionName`) VALUES ('Boston Red Sox', 'BOS', 'AL', 'AL EAST');
 INSERT INTO `baseball`.`team` (`teamName`, `ABBR`, `league`, `divisionName`) VALUES ('New York Yankees', 'NYY', 'AL', 'AL EAST');
@@ -365,3 +364,26 @@ FROM baseball.roster R
 INNER JOIN baseball.team T ON R.teamID = T.ID
 INNER JOIN baseball.player P on R.playerID = P.ID
 ;
+select *from player;
+Select * from team;
+Select * from batting;
+Select * from roster;
+select team.ID, t.Team.Name, batting.TeamID, batting.Rank, batting.BattingAvg From team Inner Join batting on team.id = batting.TeamID;
+SELECT team.ID
+, team.TeamName
+, batting.TeamID
+, batting.Rank
+, batting.BattingAvg
+FROM team
+INNER JOIN batting ON team.ID = batting.TeamID;
+SELECT team.ID
+, team.TeamName
+, batting.TeamID
+, batting.Rank
+, batting.BattingAvg
+FROM team
+SELECT player.ID, player.lastName, player.firstName, batting.battingAvg FROM player INNER JOIN batting ON player.ID = batting.playerID;
+SELECT roster.ID, roster.teamID, roster.playerID FROM roster INNER JOIN player ON player.ID = roster.playerID;
+SELECT * FROM vTeamRoster;
+DESCRIBE vTeamRoster;
+SHOW CREATE VIEW vTeamRoster;
